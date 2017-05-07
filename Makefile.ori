@@ -1,3 +1,4 @@
+
 PROJECT := openpose
 
 CONFIG_FILE := Makefile.config
@@ -208,18 +209,6 @@ CXXFLAGS += -fopenmp -Wpedantic -Wall -Wextra
 CXXFLAGS += -Wfatal-errors
 COMMON_FLAGS += -std=c++11
 LINKFLAGS += -fopenmp
-
-
-##############################
-# ROS CODE
-##############################
-
-
-CXXFLAGS += `pkg-config --cflags roscpp std_msgs message_generation tf cv_bridge image_transport pcl_ros sensor_msgs``pkg-config opencv --cflags opencv` 
-LDFLAGS  += $(SUBLIBS) $(ros_libs_nocolon) `pkg-config --libs opencv`
-ros_libs = $(shell pkg-config --libs roscpp std_msgs message_generation tf cv_bridge image_transport pcl_ros sensor_msgs)
-ros_libs_nocolon = $(subst -l:,,$(ros_libs))
-
 
 
 ##############################
